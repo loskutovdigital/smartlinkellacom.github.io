@@ -324,19 +324,45 @@
     padding: 16px 0;
     border-bottom: 1px solid var(--line);
   }
+
   .marquee-row:last-child { border-bottom: none; }
 
   .marquee-track {
     display: flex;
-    gap: 40px;
+    width: max-content;
+    flex: 0 0 auto;
     white-space: nowrap;
-    animation: scroll-l 26s linear infinite;
-    padding-left: 40px;
+    animation: scroll-l 34s linear infinite;
+    will-change: transform;
+    transform: translate3d(0,0,0);
   }
-  .marquee-track.rev { animation: scroll-r 30s linear infinite; }
 
-  @keyframes scroll-l { to { transform: translateX(-50%); } }
-  @keyframes scroll-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  .marquee-track.rev {
+    animation-name: scroll-r;
+    animation-duration: 32s;
+  }
+
+  .marquee-group {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 40px;
+    padding-right: 40px;
+  }
+
+  @keyframes scroll-l {
+    from { transform: translate3d(0,0,0); }
+    to   { transform: translate3d(-50%,0,0); }
+  }
+
+  @keyframes scroll-r {
+    from { transform: translate3d(-50%,0,0); }
+    to   { transform: translate3d(0,0,0); }
+  }
+
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
 
   .m-item {
     font-family: 'IBM Plex Mono', monospace;
@@ -345,8 +371,9 @@
     color: var(--muted);
     display: flex;
     align-items: center;
-    gap: 40px;
+    flex: 0 0 auto;
   }
+
   .m-item .tier-tag {
     color: var(--ink);
     background: var(--amber);
@@ -801,7 +828,7 @@
 </div>
 <div class="quickfacts">
 <span class="qf"><span class="qf-dot"></span>180+ GEOs, Tier 1–3</span>
-<span class="qf"><span class="qf-dot"></span>6 traffic types</span>
+<span class="qf"><span class="qf-dot"></span>10 traffic types</span>
 <span class="qf"><span class="qf-dot"></span>Net-7 payouts</span>
 </div>
 </div>
@@ -848,18 +875,14 @@
 <div class="marquee-wrap">
 <div class="marquee-row">
 <div class="marquee-track">
-<span class="m-item">PUSH</span><span class="m-item">POP / REDIRECT</span><span class="m-item">NATIVE</span><span class="m-item">SOCIAL</span><span class="m-item">SEARCH / SEO</span><span class="m-item">IN-APP</span><span class="m-item">DISPLAY</span>
-<span class="m-item">PUSH</span><span class="m-item">POP / REDIRECT</span><span class="m-item">NATIVE</span><span class="m-item">SOCIAL</span><span class="m-item">SEARCH / SEO</span><span class="m-item">IN-APP</span><span class="m-item">DISPLAY</span>
+<div class="marquee-group"><span class="m-item">PUSH</span><span class="m-item">POP / REDIRECT</span><span class="m-item">NATIVE</span><span class="m-item">SOCIAL</span><span class="m-item">FACEBOOK</span><span class="m-item">SEARCH / SEO</span><span class="m-item">IN-APP</span><span class="m-item">DISPLAY</span><span class="m-item">BANNER ADS</span><span class="m-item">MEMBER AREA</span></div>
+<div class="marquee-group" aria-hidden="true"><span class="m-item">PUSH</span><span class="m-item">POP / REDIRECT</span><span class="m-item">NATIVE</span><span class="m-item">SOCIAL</span><span class="m-item">FACEBOOK</span><span class="m-item">SEARCH / SEO</span><span class="m-item">IN-APP</span><span class="m-item">DISPLAY</span><span class="m-item">BANNER ADS</span><span class="m-item">MEMBER AREA</span></div>
 </div>
 </div>
 <div class="marquee-row">
 <div class="marquee-track rev">
-<span class="m-item"><span class="tier-tag">T1</span>US · UK · DE · CA · AU · FR</span>
-<span class="m-item"><span class="tier-tag">T2</span>PL · IT · ES · MX · RO</span>
-<span class="m-item"><span class="tier-tag">T3</span>IN · PH · BR · NG · ID</span>
-<span class="m-item"><span class="tier-tag">T1</span>US · UK · DE · CA · AU · FR</span>
-<span class="m-item"><span class="tier-tag">T2</span>PL · IT · ES · MX · RO</span>
-<span class="m-item"><span class="tier-tag">T3</span>IN · PH · BR · NG · ID</span>
+<div class="marquee-group"><span class="m-item"><span class="tier-tag">T1</span>US · UK · DE · CA · AU · FR</span><span class="m-item"><span class="tier-tag">T2</span>PL · IT · ES · MX · RO</span><span class="m-item"><span class="tier-tag">T3</span>IN · PH · BR · NG · ID</span></div>
+<div class="marquee-group" aria-hidden="true"><span class="m-item"><span class="tier-tag">T1</span>US · UK · DE · CA · AU · FR</span><span class="m-item"><span class="tier-tag">T2</span>PL · IT · ES · MX · RO</span><span class="m-item"><span class="tier-tag">T3</span>IN · PH · BR · NG · ID</span></div>
 </div>
 </div>
 </div>

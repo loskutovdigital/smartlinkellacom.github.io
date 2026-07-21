@@ -305,19 +305,45 @@
     padding: 16px 0;
     border-bottom: 1px solid var(--line);
   }
+
   .marquee-row:last-child { border-bottom: none; }
 
   .marquee-track {
     display: flex;
-    gap: 40px;
+    width: max-content;
+    flex: 0 0 auto;
     white-space: nowrap;
-    animation: scroll-l 26s linear infinite;
-    padding-left: 40px;
+    animation: scroll-l 34s linear infinite;
+    will-change: transform;
+    transform: translate3d(0,0,0);
   }
-  .marquee-track.rev { animation: scroll-r 30s linear infinite; }
 
-  @keyframes scroll-l { to { transform: translateX(-50%); } }
-  @keyframes scroll-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  .marquee-track.rev {
+    animation-name: scroll-r;
+    animation-duration: 32s;
+  }
+
+  .marquee-group {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 40px;
+    padding-right: 40px;
+  }
+
+  @keyframes scroll-l {
+    from { transform: translate3d(0,0,0); }
+    to   { transform: translate3d(-50%,0,0); }
+  }
+
+  @keyframes scroll-r {
+    from { transform: translate3d(-50%,0,0); }
+    to   { transform: translate3d(0,0,0); }
+  }
+
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
 
   .m-item {
     font-family: 'IBM Plex Mono', monospace;
@@ -326,8 +352,9 @@
     color: var(--muted);
     display: flex;
     align-items: center;
-    gap: 40px;
+    flex: 0 0 auto;
   }
+
   .m-item .tier-tag {
     color: var(--ink);
     background: var(--amber);
@@ -746,7 +773,8 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .marquee-track { animation: none; }
+    .marquee-track { animation: none; transform: none; }
+    .marquee-group[aria-hidden="true"] { display: none; }
     .route-trunk, .route-branch { animation: none; }
     .dot-live { animation: none; }
     * { transition-duration: 0.01ms !important; }

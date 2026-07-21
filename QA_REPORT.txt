@@ -1,7 +1,0 @@
-Smartlinkella SEO QA
-Landing pages: 1 original + 26 new
-Sitemap URLs: 27
-Unique titles: 27
-Unique canonicals: 27
-Issues: 0
-All automated checks passed.

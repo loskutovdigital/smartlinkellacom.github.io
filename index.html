@@ -1080,15 +1080,21 @@
 </div>
 <div class="fgroup">
 <label>Primary Traffic Type</label>
-<select name="traffic_type" required="required">
-<option value="">— Select —</option>
-<option>Push</option>
-<option>Pop / Redirect</option>
-<option>Native</option>
-<option>Social</option>
-<option>Search / SEO</option>
-<option>In-App</option>
-<option>Other / Mixed</option>
+<select id="trafficType" name="traffic_type" required>
+            <option value="" disabled selected>Select primary traffic type</option>
+            <option value="social">Social</option>
+            <option value="facebook">Facebook</option>
+            <option value="native">Native</option>
+            <option value="push">Push</option>
+            <option value="pop">Pop / Redirect</option>
+            <option value="search">Search / SEO</option>
+            <option value="display">Display</option>
+            <option value="banner-ads">Banner Ads</option>
+            <option value="in-app">In-App</option>
+            <option value="email">Email</option>
+            <option value="member-area">Member Area</option>
+            <option value="mixed">Mixed</option>
+            <option value="other">Other</option>
 </select>
 </div>
 <div class="fgroup">

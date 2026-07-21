@@ -1,9 +1,0 @@
-DOMAIN ASSUMPTION
-
-This package uses: https://smartlinkella.com/
-
-If the final domain is different, replace every occurrence of:
-https://smartlinkella.com
-with the final HTTPS domain before publication.
-
-Relative navigation and form functionality will continue to work.
